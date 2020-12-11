@@ -1,6 +1,7 @@
 # Relative Pitch Trainer
  <br>
  相対音感の育成を手助けするためのツールです。Javascript を用いて作成しました。
+ http://mdyscdoor.bitter.jp/rpt/rpt.html
  
  
  <br><br><br><br>
