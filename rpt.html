@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="rpt.css">
+  <title>RPT1</title>
+  <script src="https://kit.fontawesome.com/eca498cb0e.js" crossorigin="anonymous"></script>
+</head>
+
+
+
+<body>
+  
+  <div class="container">
+
+    <div class="rayout">
+    
+
+      <div class="rayout_left">
+        <div id="leftConfig">
+          <p id="BGMWrapper">BGM: <span id="isBGM">OFF</span></p>
+          <p id="keyWrapper">Key: <span id="key">C</span></p>
+        </div>
+      </div>
+  
+  
+  
+      <div class="rayout_right">
+  
+  
+  
+        <div class="display">
+          <div class="modeInfo">
+            相対音感補助ツール v1.00
+          </div>
+  
+          <div class="displayBody">
+            <div id="config">
+                <div id="modeSelect" >
+                  <div id="courseList">
+                    <h2 id="randomMode">ランダム</h2>
+                    <p>ランダムに発生した音の階名を当てるモードです</p>
+          
+                    <h2 id="setMode">コース</h2>
+                    <p>音の連続のしかた別にあらかじめ決められたセットから階名を当てるモードです</p>
+          
+                    <h2 id="mylistMode" @click="">マイリスト/単語帳</h2>
+                    <p>作成した自分の階名リストにそって階名を当てるモードです</p>
+
+  
+                  </div>
+          
+          
+          
+                  <div id="randomDetails">
+                    <div class="randomLeft">
+                      <form id="pitches">
+                        <p>階名の選択：</p>
+                        <label for="1">ド</label>
+                        <input type="checkbox" checked="checked" name="pitch" id="1" value="1">
+                        <label for="2">レ</label>
+                        <input type="checkbox" checked="checked" name="pitch" id="2" value="2">
+                        <label for="3">ミ</label>
+                        <input type="checkbox" checked="checked" name="pitch" id="3" value="3">
+                        <label for="4">ファ</label>
+                        <input type="checkbox" checked="checked" name="pitch" id="4" value="4">
+                        <label for="5">ソ</label>
+                        <input type="checkbox" checked="checked" name="pitch" id="5" value="5">
+                        <label for="6">ラ</label>
+                        <input type="checkbox" checked="checked" name="pitch" id="6" value="6">
+                        <label for="7">シ</label>
+                        <input type="checkbox" checked="checked" name="pitch" id="7" value="7">
+                      </form>
+              
+                      <br>
+              
+                      <form id="startWith">
+                        <p>最初の音の固定：</p>
+                        <label for="1">ド</label>
+                        <input type="checkbox" name="Spitch" value="1" id="Spitch1">
+                        <label for="2">レ</label>
+                        <input type="checkbox" name="Spitch" value="2">
+                        <label for="3">ミ</label>
+                        <input type="checkbox" name="Spitch" value="3">
+                        <label for="4">ファ</label>
+                        <input type="checkbox" name="Spitch" value="4">
+                        <label for="5">ソ</label>
+                        <input type="checkbox" name="Spitch" value="5">
+                        <label for="6">ラ</label>
+                        <input type="checkbox" name="Spitch" value="6">
+                        <label for="7">シ</label>
+                        <input type="checkbox" name="Spitch" value="7">
+                      </form>
+                      <br>
+                  
+                      <form id="endWith">
+                        <p>最後の音の固定：</p>
+                        <label for="1">ド</label>
+                        <input type="checkbox" name="Epitch" value="1">
+                        <label for="2">レ</label>
+                        <input type="checkbox" name="Epitch" value="2">
+                        <label for="3">ミ</label>
+                        <input type="checkbox" name="Epitch" value="3">
+                        <label for="4">ファ</label>
+                        <input type="checkbox" name="Epitch" value="4">
+                        <label for="5">ソ</label>
+                        <input type="checkbox" name="Epitch" value="5">
+                        <label for="6">ラ</label>
+                        <input type="checkbox" name="Epitch" value="6">
+                        <label for="7">シ</label>
+                        <input type="checkbox" name="Epitch" value="7">
+                      </form>
+                    </div>
+  
+  
+                    <div class="randomRight">
+  
+                      <form action="">
+                        <div class="rightConfig">
+                          <label for="repeat">連続音数：</label>
+                          <span id="hidRepeat">3</span>
+                          <input type="text" id="repeat" value="3" maxlength="1">
+                          <br>
+                          <label for="questions" class="questionsLabel">問題数　：</label>
+                          <input type="text" id="questions" value="5" maxlength="2">
+                          <br>
+                        </div>
+                        <input type="button" value="はじめる" id="btnRand">
+                        <input type="button" value="もどる" id="backRand">
+                      </form>
+                      </div>
+  
+                      <input type="button" value="OK" id="btn">
+                  </div>
+  
+  
+                  <div id="courseDetails">
+                    <p class="courseDesc">
+                      <input type="checkbox" id="reverseCourse">
+                      <label for="reverseCourse" id="reverseCourseLabel">逆順を含む</label>
+                    </p>
+  
+  
+                    <div id="courseBlock">
+                      <div id="courseLeft">
+                        <p><input type="checkBox" class="courses">２度→２度<br><span class="checkbox-space"></span><span class="pitch-figure">●●●</span></p>
+                        <p><input type="checkBox" class="courses">２度→３度<br><span class="checkbox-space"></span><span class="pitch-figure">●●〇●</span></p>
+                        <p><input type="checkBox" class="courses">３度→２度<br><span class="checkbox-space"></span><span class="pitch-figure">●〇●●</span></p>
+                      </div>
+                      <div id="courseCenter">
+                        <p><input type="checkBox" class="courses">２度→４度<br><span class="checkbox-space"></span><span class="pitch-figure">●●〇〇●</span></p>
+                        <p><input type="checkBox" class="courses">４度→２度<br><span class="checkbox-space"></span><span class="pitch-figure">●〇〇●●</span></p>
+                        <p><input type="checkBox" class="courses">３度→３度<br><span class="checkbox-space"></span><span class="pitch-figure">●〇●〇●</span></p>
+                      </div>
+  
+  
+                      <div id="courseRight">
+                        <p><input type="checkBox" class="courses">３度→４度<br><span class="checkbox-space"></span><span class="pitch-figure">●〇●〇〇●</span></p>
+                        <p><input type="checkBox" class="courses">４度→３度<br><span class="checkbox-space"></span><span class="pitch-figure">●〇〇●〇●</span></p>
+                        <p><input type="checkBox" class="courses">３度→３度→３度<br><span class="checkbox-space"></span><span class="pitch-figure">●〇●〇●〇●</span></p>
+                      </div>
+                    </div>
+  
+                    <div class="courseStartWrapper">
+  
+                      <input type="checkbox" id="randomCourse"  checked="checked">
+                      <label for="randomCourse" id="randomCourseServeLabel">ランダムに出す</label>
+  
+                      <label for="questionsCourse">問題数：</label>
+                      <input type="text" id="questionsCourse" maxlength = "2" value="5">
+                      <br class='hiddenBr'>
+  
+                      <input type="button" id="courseStartBtn" value="はじめる">
+                      <input type="button" id="courseBackBtn" value="もどる">
+                    </div>               
+                  </div>
+  
+  
+  
+  
+  
+  
+                  <div id="mylistDetails">
+  
+                    <div><span id="createMylist" @click="createMylist">+ 新規作成</span></div>
+  
+                    <p class="mylistDesc">・使うマイリストを選択してください</p>
+                    <div class="mylistTableWrapper">
+                      <table id=mylistTable>
+                        <thead>
+                          <tr>
+                            <th class="mylistTableSelectWidth">選択</th>
+                            <th>マイリスト</th>
+                            <th class="mylistTableEditWidth"></th>
+                            <th class="mylistTableEditWidth"></th>
+                          </tr>
+                        </thead>
+  
+                        <tbody id="mylistBody">
+                        </tbody>
+  
+                      </table>
+                    </div>
+  
+                    <div class="listStartWrapper">
+                      <label for="questionsList">問題数：</label>
+                      <input type="text" id="questionsList" maxlength = "2" value="5">
+                      <input type="button" id="listStartBtn" value="はじめる">
+                      <input type="button" id="listBackBtn" value="もどる">
+                    </div>
+                  </div>
+  
+                </div>
+        
+            </div> 
+  
+            
+  
+  
+  
+            <div id="q-wrapper">
+  
+              <div class="Q">
+                <div id="ques">
+  
+                  <!-- 動的生成 -->
+  
+                </div>
+                <div id="ans">
+                </div>
+  
+              </div>
+  
+  
+  
+              <div class="Q-menu">
+                <i class="fas fa-music" id="again"></i>
+                
+                <i class="fas fa-lightbulb" id="light"></i>
+                <i class="fas fa-lightbulb" id="light-off"></i>
+                <i class="fas fa-heart" id="heart"></i>
+                <i class="fas fa-pause" id="pause"></i>
+                <i class="fas fa-play" id="play"></i>
+  
+                <i class="fas fa-door-open" id="btn2"></i>
+              
+              </div>
+
+              <div class="clear"></div>
+  
+            </div>
+  
+  
+  
+            <div id="result">
+              <!-- <p id="result1">1. 〇</p>
+              <p id="result2">2. ×</p> -->
+            </div>
+  
+            
+            <div id="result_final">
+              <div id="results_final"></div>
+              <div id="R-menu">
+                <i class="fas fa-door-open" id="btn3"></i>
+                <i class="fas fa-redo" id="redo"></i>
+                <i class="fas fa-redo" id="NGRedo"></i>
+                <i class="fas fa-times" id="NGMark"></i> 
+              </div>
+            </div>
+          </div>
+        
+        </div>
+  
+  
+  
+  
+  
+        <div class="keyboard">
+  
+          <div class="keyblock keyblock1">
+            <div class="key wkey key1L" id="key1L"></div>
+            <div class="key wkey key2L" id="key2L"></div>
+            <div class="key wkey key3L" id="key3L"></div>
+            <div class="key wkey key4L" id="key4L"></div>
+            <div class="key wkey key5L" id="key5L"></div>
+            <div class="key wkey key6L" id="key6L"></div>
+            <div class="key wkey key7L" id="key7L"></div>
+      
+            <div class="key bkey bkey1" id="bkey1L"></div>
+            <div class="key bkey bkey2" id="bkey2L"></div>
+            <div class="key bkey bkey3" id="bkey3L"></div>
+            <div class="key bkey bkey4" id="bkey4L"></div>
+            <div class="key bkey bkey5" id="bkey5L"></div>
+          </div>
+      
+      
+      
+          <div class="keyblock keyblock2">
+            <div class="key wkey key1" id="key1"></div>
+            <div class="key wkey key2" id="key2"></div>
+            <div class="key wkey key3" id="key3"></div>
+            <div class="key wkey key4" id="key4"></div>
+            <div class="key wkey key5" id="key5"></div>
+            <div class="key wkey key6" id="key6"></div>
+            <div class="key wkey key7" id="key7"></div>
+      
+            <div class="key bkey bkey1" id="bkey1"></div>
+            <div class="key bkey bkey2" id="bkey2"></div>
+            <div class="key bkey bkey3" id="bkey3"></div>
+            <div class="key bkey bkey4" id="bkey4"></div>
+            <div class="key bkey bkey5" id="bkey5"></div>
+          </div>
+      
+      
+      
+          <div class="keyblock keyblock3">
+            <div class="key wkey key1H" id="key1H"></div>
+            <div class="key wkey key2H" id="key2H"></div>
+            <div class="key wkey key3H" id="key3H"></div>
+            <div class="key wkey key4H" id="key4H"></div>
+            <div class="key wkey key5H" id="key5H"></div>
+            <div class="key wkey key6H" id="key6H"></div>
+            <div class="key wkey key7H" id="key7H"></div>
+            
+      
+            <div class="key bkey bkey1" id="bkey1H"></div>
+            <div class="key bkey bkey2" id="bkey2H"></div>
+            <div class="key bkey bkey3" id="bkey3H"></div>
+            <div class="key bkey bkey4" id="bkey4H"></div>
+            <div class="key bkey bkey5" id="bkey5H"></div>
+      
+          </div>
+          <div class="keyblock keyblock4">
+            <div class="key wkey key1H" id="key1HH"></div>
+          </div>
+  
+      
+        </div>
+  
+        
+        <div id="blackLayer" v-if="isModalOpen" v-cloak>
+          <div id="createModal">
+            <p><span id="cancelCreateMylist" @click="cancelCreateMylist">- キャンセル</span></p>
+  
+  
+            <div id="newMylist" v-if="creatingMylist">
+              <input type="text" value="" placeholder="新規フォルダ" id="nameNewMylist" v-model="tmpName">
+              <input type="button" value="追加" id="newMylistBtn"  @click="setNewMylistName()">
+            </div>
+  
+  
+            <div id="editNewMylist" v-if="editingMylist">
+              <p><input type="text" id="editMylistName" v-model="tmpName"></p>
+              <p class="editDesc">・キーボードで階名を順番に登録してください</p>
+
+              <div id="editNewMylistDisplay">
+                <div id="pitchesDisplay">{{tmpSolfaPitchOrder}}</div>
+                  
+  
+                <span class="delete1" @click="deletePitch">
+                  一文字消す
+                </span>
+              </div>
+  
+              <div class="addWrap"><input type="button" value="追加" id="addPitchOrder" @click="addPitchOrder"></div>
+  
+  
+              <div class="registeringPitches">
+                <table id=pitchTable>
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th class="setTableWidth"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="newMylistBody">
+                  </tbody>
+                </table>
+              </div>
+  
+              <div class="registerBtn"><input type="button" id="setMylist" value="完了" @click="registerMylist"></div>
+  
+            </div>
+  
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+  
+    <div id="q"></div>
+    <div id="inputs"></div>
+    <br>
+  
+    <div id="correct"></div>
+    <div id="myAns"></div>
+    <br>
+  
+    <div id="scores"></div>
+  
+
+  </div>
+
+
+
+
+  <div id="description">
+    <p class="description-title">相対音感補助ツール</p>
+
+    <p id="desc-top">
+      相対音感を鍛える手助けのためのツールです。<br>
+      鳴らされた音の階名を当て、キーボードで入力するというのが基本的なゲームの流れになります。<br>
+      製作にあたり、スマートフォンアプリ「ずっしーの音感トレーニング」「おとあて」や、<br>
+      大島俊樹氏をはじめ様々な方々のTwitter等参考にさせていただいております。
+    </p>
+
+    <div id="desc-mode">
+      <div class="header-title">モード選択</div>
+
+      <div class="desc-contents">
+        ・ランダムモード<br><br>
+        ランダムに生成された音を聴き、階名を当てるモードです。<br>
+        開始音、終了音、連続音数、含む音が選択できるので、例えば<br>
+        「ド、レ、ミ、ソ、ラのうち、ドから始まりラで終わる、４つの音をランダムで生成する」といった設定が出来ます。
+        <br><br><br><br>
+        ・コースモード<br><br>
+        音のまとまりかた別に鳴らす音を限定させ、音を当てるモードです。<br>
+        「ずっしーの音感トレーニング」さんのステージ別の分け方に近いです。<br><br>
+        「二度→二度」ならとなり合う三つの音(ドレミ など)、「二度→四度」なら隣り合う音から二つ飛ばし（ドレソ など）です。
+
+        <br><br><br><br>
+        ・マイリストモード<br><br>
+        重点的に覚えたい階名をマイリストに登録し、そのリストから音を鳴らして階名を当てるモードです。<br>
+        階名のまとまりを単語帳アプリのような感じで覚えられます。<br>
+        耳コピした曲の階名を備忘録として登録したり、間違った問題を登録して覚えるなど、<br>
+        学習進度や目的に応じてお使いください。<br><br>
+
+      </div>
+    </div>
+
+    <div id="desc-icon">
+      <div class="header-title">ボタンアイコンの説明</div>
+
+      <div class="desc-contents">
+        <p>        
+          <i class="fas fa-music" id="again-d"></i>
+          問題の音をもう一度鳴らします。
+        </p>
+        <p>
+          <i class="fas fa-lightbulb" id="light-d"></i>
+          <i class="fas fa-lightbulb" id="light-off-d"></i>
+          問題の階名を表示・非表示をします。はじめて間もない段階や、階名の引き出しをとにかく増やしたい場合はクリックしておくといいです。
+        </p>
+        <p>
+          <i class="fas fa-heart" id="heart-d"></i>
+          現在の問題をブックマークします。マイリストモードの「ブックマーク」から参照できます。
+        </p>
+        <p>
+          <i class="fas fa-pause" id="pause-d"></i>
+          <i class="fas fa-play" id="play-d"></i>
+          答えの入力受付を一時停止・再開します。問題の途中でキーボードをいじりたいときはクリックしてください。
+        </p>
+        <p>
+          <i class="fas fa-door-open" id="door-d"></i>
+          途中で問題をやめられます。
+        </p><br>
+        <p>
+          <i class="fas fa-redo" id="redo-d"></i>
+          <i class="fas fa-redo" id="NGRedo-d"></i>
+          現在の設定を引き継いだままもう一度問題を繰り返します。間違った問題だけを繰り返したい場合は、赤いアイコンをクリックしてください。
+        </p>
+      </div>
+    </div>
+
+    <div id="desc-details">
+      <div class="header-title">その他細かい仕様</div>
+      <div class="desc-contents">
+
+        ・黒鍵は反応しません、申し訳ございません。<br>
+        ・左下メニューよりBGMのオン・オフ切り替えができます。Key=C(ハ長調)のはずです。<br>
+        　フリーBGM・音楽素材MusMus https://musmus.main.jp/ 様からお借りしています。<br>
+        ・効果音：魔王魂様<br>
+        ・マイリストはブラウザのローカルストレージに保存されてます。
+      </div>
+    </div>
+  </div>
+
+  <div id="desc-message">
+    <div class="header-title">相対音感について</div>
+    <div class="desc-contents">
+
+      ・相対音感の訓練のためには、最低でも２音以上の連続した音の組み合わせを、調のなかの役割とセットで覚えるのがよく、
+      その調の和音や曲を意識すると効果的とのことです。<br><br>
+      ・このアプリだけではおそらく相対音感の育成には不十分で、階名の文字列から音をイメージする練習をしたり、<br>
+      実際に知ってる曲を移動ドで歌ってみたりする(有名曲の階名をYoutubeに上げてくださっている方がいます）のもいいと思います。<br><br>
+
+      
+    </div>
+  </div>
+
+  <div id="desc-message">
+    <div class="header-title">さいごに</div>
+    <div class="desc-contents">
+
+      ・製作者はいまだ相対音感がほとんど身についておらず、練習過程でさまざまな方の音感についての記事や投稿を読ませて頂いたり、アプリを利用させていただいているうちに「こんな機能があったらな」と思ったものをプログラミングの練習も兼ねて具現化したのがこのアプリになります。もし音楽的に致命的な欠陥ございましたらお手数ですがご意見よろしくお願いいたします。<br><br>
+      ・御覧の通り「ずっしーの音感トレーニング」さんにかなり影響を受けているアプリですので、もし作者様から連絡を頂いたら公開を停止します。元アプリにマイリスト機能など同様の機能が一通り追加された場合も公開を停止する予定です。<br><br>
+      ・バグ報告やご意見：tokiyu.wu☆gmail.com(☆→＠)　または　@mdyscdoor までよろしくお願いいたします。<br>
+
+      
+    </div>
+  </div>
+
+
+</div>
+
+
+
+  <script src="vue.min.js"></script>
+  <script src="rpt.js"></script>
+  <audio src="MusMus-BGM-105a.mp3" id="BGM" preload loop></audio>
+</body>
+</html>
