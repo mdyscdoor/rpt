@@ -1884,8 +1884,12 @@ new Vue({
         try {
           console.log(i);
           JSON.parse(localStorage[keyList[i]]);
+          if(isNaN(JSON.parse(localStorage[keyList[i]]))) {
+            console.log('not number error: ' +localStorage[keyList[i]]);
+            errKeyList.push(keyList[i]);
+          }
         } catch(e) {
-          console.log('error: '+i);
+          console.log('not JSON error: '+localStorage[keyList[i]]);
           errKeyList.push(keyList[i]);
         }
       }
