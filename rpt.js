@@ -507,6 +507,8 @@ document.addEventListener('DOMContentLoaded', function() {
       audio.src = "./sounds/" + arr[i] + ".mp3";
       audio.id = "soundQ" + arr[i];
 
+
+      //モバイル端末の場合にラグを考慮
       if(windowWidth < 800) {
         document.body.appendChild(audio);
         let currentAudio = document.getElementById("soundQ" + arr[i]);
@@ -532,12 +534,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
         currentAudio.addEventListener('ended', audioListener, false);
 
+
+      //pcの場合
       } else {
         document.body.appendChild(audio);
         let currentAudio = document.getElementById("soundQ" + arr[i]);
         document.getElementById("soundQ" + arr[i]).currentTime = 0;
         isPlaying = true;
         currentAudio.play();
+        
+        currentAudio.addEventListener('ended', function() {
+          document.body.removeChild(currentAudio);
+        });
   
         if ((countTimeout) < arr.length - 1) {
           setTimeout(quesSound, 500, arr, ++countTimeout);
@@ -575,7 +583,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
       sound.id = 'judge';
       document.body.appendChild(sound);
-      document.getElementById('judge').play();
+      sound.play();
+
+      judge = document.getElementById('judge');
+      judge.addEventListener('ended', function() {
+        document.body.removeChild(judge);
+      });
+
+
 
       
       
@@ -847,6 +862,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("soundQ" + arr[i]).currentTime = 0;
         isPlaying = true;
         document.getElementById("soundQ" + arr[i]).play();
+        document.getElementById("soundQ" + arr[i]).addEventListener('ended', function() {
+          document.body.removeChild(audio);
+        });
 
         if (count2 < arr.length - 1) {
           setTimeout(quesSound2, 500, arr, ++count2);
@@ -986,6 +1004,10 @@ document.addEventListener('DOMContentLoaded', function() {
           let play = document.getElementById('sound' + (k+1));
           play.currentTime = 0;
           play.play();
+
+          play.addEventListener('ended', function() {
+            document.body.removeChild(audio);
+          });
 
 
 
@@ -1284,7 +1306,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
+  //自由にならせるキーボード
   let keyboard = function () {
     
     console.log('keyboard');
@@ -1306,6 +1328,10 @@ document.addEventListener('DOMContentLoaded', function() {
         let play = document.getElementById('sound' + (i+1));
         play.currentTime = 0;
         play.play();
+        play.addEventListener('ended', function() {
+          let stop = document.getElementById('sound' + (i+1));
+          document.body.removeChild(stop);
+        });
 
       });
     }
