@@ -530,8 +530,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             currentAudio.removeEventListener('ended', audioListener, false);
           }
-        };
+          document.body.removeChild(currentAudio);
 
+        };
         currentAudio.addEventListener('ended', audioListener, false);
 
 
@@ -1910,7 +1911,7 @@ new Vue({
         try {
           console.log(i);
           JSON.parse(localStorage[keyList[i]]);
-          if(isNaN(JSON.parse(localStorage[keyList[i]]))) {
+          if(isNaN(JSON.parse(localStorage[keyList[i]]).id)) {
             console.log('not number error: ' +localStorage[keyList[i]]);
             errKeyList.push(keyList[i]);
           }
