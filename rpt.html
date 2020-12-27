@@ -39,15 +39,47 @@
           <div class="displayBody">
             <div id="config">
                 <div id="modeSelect" >
+
+
+                  <div id="game_start">
+
+                    <h1 class="start_message">
+                      相対音感を鍛えるためのツールです。<br>
+                      かなり細かく設定ができるようになっています。<br>
+                      操作方法は下に記述してあります。
+                    </h1>
+
+                    <div>
+                      <div id="game_start_btn">はじめる</div>
+                    </div>
+
+                  </div>
+
+
+
                   <div id="courseList">
-                    <h2 id="randomMode">ランダム</h2>
-                    <p>ランダムに発生した音の階名を当てるモードです</p>
-          
-                    <h2 id="setMode">コース</h2>
-                    <p>音の連続のしかた別にあらかじめ決められたセットから階名を当てるモードです</p>
-          
-                    <h2 id="mylistMode" @click="">マイリスト/単語帳</h2>
-                    <p>作成した自分の階名リストにそって階名を当てるモードです</p>
+
+                    <div class="listCover">
+                      <div class="randomCircle">
+                        <h2 id="randomMode">ランダム</h2>
+                        <p>ランダムに音がでる</p>
+                      </div>
+  
+            
+                      <div class="setCircle">
+                        <h2 id="setMode">コース</h2>
+                        <p>音の間隔を固定</p>
+                      </div>
+  
+            
+                      <div class="mylistCircle">
+                        <h2 id="mylistMode" @click="">マイリスト/単語帳</h2>
+                        <p>自分で登録したメロディ<br>から出題</p>
+                      </div>
+                
+                    </div>
+
+
 
   
                   </div>
@@ -524,5 +556,8 @@
   <script src="vue.min.js"></script>
   <script src="rpt.js"></script>
   <audio src="sounds/MusMus-BGM-105a.mp3" id="BGM" preload loop></audio>
+
+  <audio src=""></audio>
+
 </body>
 </html>

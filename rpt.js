@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
   let showPitch = false;
   let booked = false;
   let playingBGM = false;
+  let folder;
+  let soundList = [];
 
   let MylistMode = false;
   let MylistRandList = [];
@@ -166,6 +168,42 @@ document.addEventListener('DOMContentLoaded', function() {
       pitchFigure[i].style.display = 'none';
     }
   }
+
+
+
+
+
+  //最初のスタートボタン
+  document.getElementById('game_start_btn').addEventListener('click', function() {
+
+    folder = "./sounds/";
+    let sCount = -6;
+
+    for(let i=1; i<23; i++) {
+      let audio = document.createElement('audio');
+      audio.src = folder + sCount + ".mp3";
+      audio.id = "sound" + i;
+      document.body.appendChild(audio);
+
+      getAudio = document.getElementById("sound" + 1);
+      getAudio.load();
+      sCount++;
+    }
+
+    document.getElementById('game_start').style.display = "none";
+    document.getElementById('courseList').style.display = "block";
+
+
+
+
+
+
+
+
+
+  });
+
+
 
 
 
@@ -495,58 +533,76 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //問題の音を鳴らす関数
     let quesSound = function(arr, i) {
-      let exist = document.getElementById("soundQ" + arr[i]);
-      console.log(arr);
-      console.log('arr[i]:' + arr[i]);
-      if (exist) {
-        document.body.removeChild(exist);
-      }
+      // let exist = document.getElementById("soundQ" + arr[i]);
+      // console.log(arr);
+      // console.log('arr[i]:' + arr[i]);
+      // if (exist) {
+      //   document.body.removeChild(exist);
+      // }
 
-      console.log('→quesSound');
-      let audio = document.createElement('audio');
-      audio.src = "./sounds/" + arr[i] + ".mp3";
-      audio.id = "soundQ" + arr[i];
+      // console.log('→quesSound');
+      // let audio = document.createElement('audio');
+      // audio.src = "./sounds/" + arr[i] + ".mp3";
+      // audio.id = "soundQ" + arr[i];
 
 
       //モバイル端末の場合にラグを考慮
-      if(windowWidth < 800) {
-        document.body.appendChild(audio);
-        let currentAudio = document.getElementById("soundQ" + arr[i]);
-        document.getElementById("soundQ" + arr[i]).currentTime = 0;
-        isPlaying = true;
-        currentAudio.play();
+      // if(windowWidth < 800) {
+      // //   document.body.appendChild(audio);
+      //   console.log("arr[i] = " + arr[i]);
+      //   let currentAudio;
+
+      //   if(arr[i] < 1) {
+      //     currentAudio = document.getElementById("sound" + (arr[i] + 7));
+      //   } else if (arr[i] > 22){
+      //     currentAudio = document.getElementById("sound" + (arr[i] - 7));
+      //   } else {
+      //     currentAudio = document.getElementById("sound" + arr[i]);
+      //   }
+      //   currentAudio.currentTime = 0;
+      //   isPlaying = true;
+      //   currentAudio.play();
   
 
-        const audioListener = function() {
-          if ((countTimeout) < arr.length - 1) {
-            setTimeout(quesSound, 1, arr, ++countTimeout);
-            currentAudio.removeEventListener('ended', audioListener, false);
-          } else {
-            isPlaying = false;
-            countTimeout = 0;
-            //console.log('isPlaying: ' + isPlaying);
-            clearTimeout();
-            console.log('quesSoundExit');
+      //   const audioListener = function() {
+      //     if ((countTimeout) < arr.length - 1) {
+      //       setTimeout(quesSound, 1, arr, ++countTimeout);
+      //       currentAudio.removeEventListener('ended', audioListener, false);
+      //     } else {
+      //       isPlaying = false;
+      //       countTimeout = 0;
+      //       //console.log('isPlaying: ' + isPlaying);
+      //       clearTimeout();
+      //       console.log('quesSoundExit');
             
-            currentAudio.removeEventListener('ended', audioListener, false);
-          }
-          document.body.removeChild(currentAudio);
+      //       currentAudio.removeEventListener('ended', audioListener, false);
+      //     }
 
-        };
-        currentAudio.addEventListener('ended', audioListener, false);
+      //   };
+      //   currentAudio.addEventListener('ended', audioListener, false);
 
 
-      //pcの場合
-      } else {
-        document.body.appendChild(audio);
-        let currentAudio = document.getElementById("soundQ" + arr[i]);
-        document.getElementById("soundQ" + arr[i]).currentTime = 0;
+      // // //pcの場合
+      // } else {
+        // document.body.appendChild(audio);
+        let currentAudio;
+        if(arr[i] < 1) {
+          currentAudio = document.getElementById("sound" + (arr[i] + 7));
+        } else if (arr[i] > 22){
+          currentAudio = document.getElementById("sound" + (arr[i] -7));
+        } else {
+          currentAudio = document.getElementById("sound" + arr[i]);
+        }
+
+        console.log("arr[i] = " + arr[i]);
+
+        currentAudio.currentTime = 0;
         isPlaying = true;
         currentAudio.play();
         
-        currentAudio.addEventListener('ended', function() {
-          document.body.removeChild(currentAudio);
-        });
+        // currentAudio.addEventListener('ended', function() {
+        //   document.body.removeChild(currentAudio);
+        // });
   
         if ((countTimeout) < arr.length - 1) {
           setTimeout(quesSound, 500, arr, ++countTimeout);
@@ -557,7 +613,7 @@ document.addEventListener('DOMContentLoaded', function() {
           clearTimeout();
           console.log('quesSoundExit');
         }
-      }
+      // }
 
 
       console.log('←quesSound');
@@ -994,20 +1050,20 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isPlaying === false) {
           
           //発音準備
-          let audio = document.createElement('audio');
+          // let audio = document.createElement('audio');
           let j = (k+7) % 7 + 1;
           console.log(k-6);
-          audio.src = './sounds/' + (k-6) + '.mp3';
-          audio.id = 'sound' + (k+1);
+          // audio.src = './sounds/' + (k-6) + '.mp3';
+          // audio.id = 'sound' + (k+1);
 
           //発音
-          document.body.appendChild(audio);
+          // document.body.appendChild(audio);
           let play = document.getElementById('sound' + (k+1));
           play.currentTime = 0;
           play.play();
 
           play.addEventListener('ended', function() {
-            document.body.removeChild(audio);
+            // document.body.removeChild(audio);
           });
 
 
@@ -1318,20 +1374,20 @@ document.addEventListener('DOMContentLoaded', function() {
     for(let i=0, len=keys.length; i<len; i++) {
       keys[i].addEventListener('click', function() {
         
-        //発音準備
-        let audio = document.createElement('audio');
-        let j = i % 7 + 1;
-        audio.src = './sounds/' + (i-6) + '.mp3';
-        audio.id = 'sound' + (i+1);
+        // //発音準備
+        // let audio = document.createElement('audio');
+        // let j = i % 7 + 1;
+        // audio.src = './sounds/' + (i-6) + '.mp3';
+        // audio.id = 'sound' + (i+1);
 
         //発音
-        document.body.appendChild(audio);
+        // document.body.appendChild(audio);
         let play = document.getElementById('sound' + (i+1));
         play.currentTime = 0;
         play.play();
         play.addEventListener('ended', function() {
-          let stop = document.getElementById('sound' + (i+1));
-          document.body.removeChild(stop);
+          // let stop = document.getElementById('sound' + (i+1));
+          // document.body.removeChild(stop);
         });
 
       });
